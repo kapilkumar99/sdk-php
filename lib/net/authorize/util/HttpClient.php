@@ -70,7 +70,10 @@ class HttpClient
         curl_setopt($curl_request, CURLOPT_HEADER, 0);
         curl_setopt($curl_request, CURLOPT_TIMEOUT, 45);
         curl_setopt($curl_request, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($curl_request, CURLOPT_SSL_VERIFYHOST, 2);
+		
+		/* Code changes for getaujobdetails */
+		curl_setopt($curl_request, CURLOPT_SSL_VERIFYPEER,0);
+        curl_setopt($curl_request, CURLOPT_SSL_VERIFYHOST, 0);
 
         $this->logger->info(sprintf(" Url: %s", $post_url));
         // Do not log requests that could contain CC info.
